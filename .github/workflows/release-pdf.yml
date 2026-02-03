@@ -1,0 +1,55 @@
+name: Release PDF
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  release-pdf:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Set version to v1.00
+        run: |
+          echo "v1.00" > VERSION.txt
+          echo "Version set to v1.00 for release"
+      
+      - name: Commit updated VERSION.txt
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add VERSION.txt
+          git commit -m "Set version to v1.00 for release" || echo "No changes to commit"
+          git push || echo "Nothing to push"
+      
+      - name: Install Pandoc
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc
+      
+      - name: Install LaTeX
+        run: |
+          sudo apt-get install -y texlive-xetex texlive-fonts-recommended texlive-plain-generic
+      
+      - name: Build PDF
+        run: |
+          bash scripts/build-pdf.sh
+      
+      - name: Upload PDF to release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: "*.pdf"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: JobHunter07-v1.00
+          path: "*.pdf"
+          if-no-files-found: error

@@ -1,0 +1,79 @@
+name: Bump Version and Build PDF
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  bump-and-build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Read and bump version
+        id: bump_version
+        run: |
+          # Read current version
+          CURRENT_VERSION=$(cat VERSION.txt | tr -d '[:space:]')
+          echo "Current version: $CURRENT_VERSION"
+          
+          # Check if version starts with v0.
+          if [[ "$CURRENT_VERSION" =~ ^v0\. ]]; then
+            # Extract the numeric part after v0.
+            NUMERIC_PART="${CURRENT_VERSION#v0.}"
+            
+            # Remove leading zeros and increment
+            NUMERIC_INT=$(echo "$NUMERIC_PART" | sed 's/^0*//')
+            if [ -z "$NUMERIC_INT" ]; then
+              NUMERIC_INT=0
+            fi
+            NEW_NUMERIC_INT=$((NUMERIC_INT + 1))
+            NEW_NUMERIC=$(printf "%02d" $NEW_NUMERIC_INT)
+            
+            NEW_VERSION="v0.$NEW_NUMERIC"
+            echo "New version: $NEW_VERSION"
+            
+            # Write new version to file
+            echo "$NEW_VERSION" > VERSION.txt
+            
+            echo "version_bumped=true" >> $GITHUB_OUTPUT
+            echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
+          else
+            echo "Version does not start with v0., skipping bump"
+            echo "version_bumped=false" >> $GITHUB_OUTPUT
+            echo "new_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Commit updated VERSION.txt
+        if: steps.bump_version.outputs.version_bumped == 'true'
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add VERSION.txt
+          git commit -m "Bump version to ${{ steps.bump_version.outputs.new_version }}"
+          git push
+      
+      - name: Install Pandoc
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc
+      
+      - name: Install LaTeX
+        run: |
+          sudo apt-get install -y texlive-xetex texlive-fonts-recommended texlive-plain-generic
+      
+      - name: Build PDF
+        run: |
+          bash scripts/build-pdf.sh
+      
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: JobHunter07-${{ steps.bump_version.outputs.new_version }}
+          path: "*.pdf"
+          if-no-files-found: error
