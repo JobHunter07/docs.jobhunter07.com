@@ -13,6 +13,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
+          # Note: GITHUB_TOKEN is sufficient for this workflow
+          # The version bump commit will not trigger other workflows (GitHub's recursive prevention)
+          # This is intentional to avoid infinite loops
           token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Read and bump version
@@ -28,11 +31,14 @@ jobs:
             NUMERIC_PART="${CURRENT_VERSION#v0.}"
             
             # Remove leading zeros and increment
+            # Note: sed 's/^0*//' handles v0.00 by returning empty string
+            # The subsequent if statement converts empty string to 0
             NUMERIC_INT=$(echo "$NUMERIC_PART" | sed 's/^0*//')
             if [ -z "$NUMERIC_INT" ]; then
               NUMERIC_INT=0
             fi
             NEW_NUMERIC_INT=$((NUMERIC_INT + 1))
+            # Format with minimum 2 digits (allows v0.100, v0.101, etc.)
             NEW_NUMERIC=$(printf "%02d" $NEW_NUMERIC_INT)
             
             NEW_VERSION="v0.$NEW_NUMERIC"
