@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#C98A2E" />
+      <stop offset="1" stop-color="#2F3E2C" />
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="100" r="90" fill="none" stroke="#1A1A1A" stroke-opacity="0.08" stroke-width="4"/>
+  <g transform="translate(100,100)">
+    <polygon points="0,-70 12,-10 0,0 -12,-10" fill="#C98A2E" opacity="0.85"/>
+    <polygon points="0,70 12,10 0,0 -12,10" fill="#2F3E2C" opacity="0.9"/>
+    <circle cx="0" cy="0" r="6" fill="#1A1A1A" opacity="0.6"/>
+  </g>
+  <text x="100" y="18" font-family="sans-serif" font-size="12" text-anchor="middle" fill="#1A1A1A" opacity="0.12">N</text>
+</svg>

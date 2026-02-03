@@ -1,0 +1,250 @@
+% JobHunter07 Pandoc LaTeX template
+% Inspired by misty forest path, compass, footprints, and navigational motifs
+% Supports title page, TOC, chapters, headers/footers, images, and version injection
+
+\documentclass[11pt, a4paper]{memoir}
+
+% Encoding and languages
+% Encoding and microtypography
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+
+% Colors (brand palette)
+\usepackage{xcolor}
+\definecolor{moss}{HTML}{2F3E2C} % Deep Moss Green
+\definecolor{fog}{HTML}{D9D9D6}  % Fog Gray
+\definecolor{woodland}{HTML}{5A4632} % Woodland Brown
+\definecolor{compass}{HTML}{C98A2E} % Compass Gold
+\definecolor{shadow}{HTML}{1A1A1A} % Shadow Black
+\definecolor{mist}{HTML}{F5F5F2} % Mist White
+
+% Slight transparent variants
+\colorlet{moss!20}{moss!20}
+
+% Page geometry
+\usepackage[inner=3cm,outer=3cm,top=2.5cm,bottom=2.5cm]{geometry}
+
+% Fonts - prefer XeLaTeX / LuaLaTeX for best results; fall back for pdfLaTeX
+\usepackage{ifxetex,ifluatex}
+\ifxetex
+  \usepackage{fontspec}
+  \setmainfont{Lora}[Numbers={Proportional}]
+  \setsansfont{Montserrat}
+  \newfontfamily\codefont{Fira Code}
+\else\ifluatex
+  \usepackage{fontspec}
+  \setmainfont{Lora}[Numbers={Proportional}]
+  \setsansfont{Montserrat}
+  \newfontfamily\codefont{Fira Code}
+\else
+  % pdfLaTeX fallbacks
+  \usepackage{mathptmx}
+  \usepackage{courier}
+  \let\codefont\ttfamily
+\fi\fi
+
+% Graphics and backgrounds
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{eso-pic} % to place background images
+\usepackage{transparent}
+\usetikzlibrary{shadows,shapes,calc}
+
+% Boxes and callouts
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{breakable}
+
+% Hyperlinks
+\usepackage[hidelinks]{hyperref}
+
+% Header and footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+% Page number on outside edge and version in outer footer
+\fancyfoot[LE]{\color{fog}\thepage}
+\fancyfoot[RO]{\color{fog}\thepage}
+\fancyfoot[RE,LO]{\color{shadow}\JobHunterVersion}
+
+% Chapter style
+\usepackage{titlesec}
+% Chapter style: moss heading with compass marker
+\titleformat{\chapter}[display]
+  {\normalfont\Huge\bfseries\sffamily\color{moss}}{\filleft\large\color{compass}\raisebox{-1ex}{\thechapter}}{0pt}{\Huge}
+\titleformat{\section}{\normalfont\Large\bfseries\sffamily\color{moss}}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries\sffamily\color{woodland}}{\thesubsection}{1em{}
+}{}
+
+% Custom rules and separators
+\newcommand{\trailrule}{%
+  \vspace{0.5\baselineskip}
+  \noindent{\color{moss}\rule{\linewidth}{0.6pt}}\par
+  \vspace{0.5\baselineskip}
+}
+
+% Compass watermark for title page and optionally chapter pages
+% Compass watermark drawn in TikZ so no external asset required
+\newcommand{\compassWatermark}[1]{%
+  \AddToShipoutPictureBG*{%
+    \AtPageCenter{%
+      \begin{tikzpicture}[opacity=0.06]
+        \draw[draw=shadow!70, line width=0.6pt] (0,0) circle (#1*0.5);
+        \foreach \a in {0,90,180,270} {\draw[draw=shadow!70] (\a:#1*0.45) -- (\a:#1*0.5);} 
+        \node[font=\sffamily\small, color=shadow!60] at (0, #1*0.55) {N};
+        \node[font=\sffamily\small, color=shadow!60] at (0, -#1*0.55) {S};
+        \node[font=\sffamily\small, color=shadow!60] at (#1*0.55,0) {E};
+        \node[font=\sffamily\small, color=shadow!60] at (-#1*0.55,0) {W};
+        \path[draw=compass, line width=1pt, rotate=15] (0,0) -- (0,#1*0.45);
+      \end{tikzpicture}
+    }
+  }
+}
+
+% Footprint separator (inline small graphic fallback to dotted rule)
+% Footprint separator using a dotted path motif
+\newcommand{\footprintSeparator}{%
+  \par\vspace{0.8\baselineskip}
+  \noindent\centering{\tikz[baseline] { \draw[draw=woodland, line width=0.8pt, dash pattern=on 0.5pt off 2pt] (0,0) -- (3cm,0); \foreach \x in {0.3,0.9,1.5,2.1,2.7} { \fill[woodland] (\x,0) circle (0.035cm);} }}\par
+  \vspace{0.8\baselineskip}
+}
+
+% Soft fog gradient at top
+\newcommand{\topFog}{%
+  \AddToShipoutPictureBG*{%
+    \AtPageUpperLeft{%
+      \begin{tikzpicture}[remember picture, overlay]
+        \path[inner sep=0] (0,0) rectangle (\paperwidth,-3cm);
+        \shade[left color=white, right color=white, bottom color=white, top color=fog] (0,0) rectangle (\paperwidth,-3cm);
+      \end{tikzpicture}
+    }
+  }
+}
+
+% Title page
+\newcommand{\maketitlepage}{%
+  \thispagestyle{empty}
+  \begingroup
+  % background tint
+  \AddToShipoutPictureBG*{%
+    \AtPageLowerLeft{%
+      \begin{tikzpicture}[remember picture, overlay]
+        \fill[fill=mist] (0,0) rectangle (\paperwidth,\paperheight);
+      \end{tikzpicture}
+    }
+  }
+  % compass watermark
+  \compassWatermark{0.7\paperwidth}
+  \vspace*{2.5cm}
+  \begin{center}
+    % Logo if provided
+    $if(logo)$
+      \IfFileExists{$logo$}{\includegraphics[height=2.5cm]{$logo$}\\[1em]}{}
+    $endif$
+    {\sffamily\Huge\color{moss}\JobHunterTitle\\[0.5em]}
+    $if(subtitle)$
+      {\sffamily\Large\color{woodland}\JobHunterSubtitle\\[1em]}
+    $endif$
+    {\sffamily\Large\color{woodland}Version: \JobHunterVersion\\[1em]}
+    $if(author)$
+      {\sffamily\large\color{shadow}\JobHunterAuthor\\[0.5em]}
+    $endif$
+    $if(date)$
+      {\sffamily\small\color{shadow}\JobHunterDate\\[1.5em]}
+    $endif$
+    \vfill
+    % Optional cover image
+    $if(cover-image)$
+      \IfFileExists{$cover-image$}{\includegraphics[width=0.6\textwidth]{$cover-image$}}{}
+    $endif$
+  \end{center}
+  \endgroup
+  \clearpage
+}
+
+% Pandoc variables mapped to LaTeX commands
+% Title / subtitle / author / date / version / logo / cover-image
+\newcommand{\JobHunterTitle}{JobHunter07}
+\newcommand{\JobHunterSubtitle}{}
+\newcommand{\JobHunterAuthor}{}
+\newcommand{\JobHunterDate}{}
+\newcommand{\JobHunterVersion}{0.1}
+\newcommand{\JobHunterLogo}{}
+\newcommand{\JobHunterCover}{}
+
+$if(title)$
+  \renewcommand{\JobHunterTitle}{$title$}
+$endif$
+$if(subtitle)$
+  \renewcommand{\JobHunterSubtitle}{$subtitle$}
+$endif$
+$if(author)$
+  \renewcommand{\JobHunterAuthor}{$author$}
+$endif$
+$if(date)$
+  \renewcommand{\JobHunterDate}{$date$}
+$endif$
+$if(version)$
+  \renewcommand{\JobHunterVersion}{$version$}
+$endif$
+$if(logo)$
+  \renewcommand{\JobHunterLogo}{$logo$}
+$endif$
+$if(cover-image)$
+  \renewcommand{\JobHunterCover}{$cover-image$}
+$endif$
+
+% Table of contents styling
+% Table of contents styling
+\setcounter{tocdepth}{2}
+\renewcommand{\contentsname}{Contents}
+\usepackage{tocloft}
+\renewcommand{\cftchapfont}{\sffamily\color{moss}}
+\renewcommand{\cftsecfont}{\sffamily\color{woodland}}
+\renewcommand{\cftdotsep}{1}
+\setlength{\cftbeforechapskip}{6pt}
+
+% Ensure images are included with sensible defaults
+\setlength{\intextsep}{10pt}
+\setkeys{Gin}{width=0.9\linewidth,keepaspectratio}
+
+% Callout box environment for Hunt Tips / Callouts
+\newtcolorbox{hunttip}[2][]% title optional
+{colback=fog!80,colframe=woodland!80,coltext=shadow,arc=2mm,boxrule=0.6pt,left=6pt,right=6pt,top=6pt,bottom=6pt,title=#2,#1}
+
+% Pull quote style
+\newcommand{\pullquote}[1]{%
+  \begin{center}\noindent\begin{tcolorbox}[colback=mist,colframe=woodland!60,width=0.8\textwidth,boxrule=0.4pt,arc=2mm]\sffamily\color{woodland}\large#1\end{tcolorbox}\end{center}}
+
+% Begin document
+\begin{document}
+
+% Title page
+\maketitlepage
+
+% Table of contents
+\clearpage
+\topFog
+\tableofcontents
+\clearpage
+
+% Main content
+$for(include-before)$
+$include-before$
+$endfor$
+
+$body$
+
+% Footer silhouette - subtle line art drawn with TikZ
+\AddToShipoutPicture{%
+  \AtPageLowerLeft{%
+    \begin{tikzpicture}[remember picture, overlay]
+      \begin{scope}[shift={(0cm,0cm)},opacity=0.04]
+        \draw[fill=shadow!10, draw=none] (0,0) -- (1.5cm,0.6cm) -- (3.2cm,0.2cm) -- (5cm,0.8cm) -- (\paperwidth,0) -- (\paperwidth, -1cm) -- (0,-1cm) -- cycle;
+      \end{scope}
+    \end{tikzpicture}
+  }
+}
+
+\end{document}
