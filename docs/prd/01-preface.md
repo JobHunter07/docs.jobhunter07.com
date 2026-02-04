@@ -1,4 +1,4 @@
-```markdown
+```markdown filename
 # Preface
 
 **Product Requirements Document (PRD) — JobHunter07**
@@ -762,3 +762,4 @@ Maintain a strong focus on user experience, accessibility, and data privacy.
 Plan for scalability, localization, and advanced features in future releases.
 
 JobHunter07’s mission is to empower users to uncover hidden opportunities and build fulfilling careers using the most advanced, ethical, and inclusive job‑hunting tools available.
+```
