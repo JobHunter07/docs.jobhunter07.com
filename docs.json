@@ -1,16 +1,34 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
-  "name": "Documentation",
+  "name": "JobHunter07 Documentation",
+  "logo": {
+    "dark": "/logo/dark.svg",
+    "light": "/logo/light.svg"
+  },
+  "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#0D9373"
+    "primary": "#0D9373",
+    "light": "#07C983",
+    "dark": "#0D9373",
+    "anchors": {
+      "from": "#0D9373",
+      "to": "#07C983"
+    }
+  },
+  "topbarLinks": [
+    {
+      "name": "Support",
+      "url": "mailto:support@jobhunter07.com"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Dashboard",
+    "url": "https://dashboard.jobhunter07.com"
   },
   "navigation": {
-    "groups": [
-      {
-        "group": "Product Requirements",
-        "pages": ["prd/01-preface"]
-      }
-    ]
+    "pages": ["prd/01-preface"]
+  },
+  "footerSocials": {
+    "github": "https://github.com/Kbdavis007"
   }
 }
