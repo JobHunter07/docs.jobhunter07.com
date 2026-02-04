@@ -8,8 +8,8 @@
   "navigation": {
     "groups": [
       {
-        "group": "Getting Started",
-        "pages": []
+        "group": "Product Requirements",
+        "pages": ["prd/01-preface"]
       }
     ]
   }
