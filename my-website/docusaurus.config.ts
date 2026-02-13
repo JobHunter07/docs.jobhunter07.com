@@ -36,21 +36,12 @@ const config: Config = {
   },
 
   // Google Analytics
-  scripts: [
-    {
-      src: 'https://www.googletagmanager.com/gtag/js?id=G-NQP67BKEYQ',
-      async: true,
+  themeConfig: {
+    gtag: {
+      trackingID: 'G-NQP67BKEYQ',
+      anonymizeIP: true,
     },
-    {
-      id: 'google-analytics',
-      innerHTML: `
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-NQP67BKEYQ');
-      `,
-    },
-  ],
+  },
 
   presets: [
     [
