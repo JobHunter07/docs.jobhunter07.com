@@ -5,8 +5,8 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'JobHunter07\'s Documentation',
-  tagline: 'Documentation for JobHunter07\'s projects',
+  title: 'JobHunter07',
+  tagline: 'Community-driven employment platform built to empower workers',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -75,23 +75,38 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'JobHunter07\'s Documentation',
+      title: 'JobHunter07',
       logo: {
-        alt: 'JobHunter07\'s Documentation Logo',
+        alt: 'JobHunter07 Logo',
         src: 'img/logo.svg',
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          label: 'Vision',
+          to: '/docs/about/mission',
           position: 'left',
-          label: 'Tutorial',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
+        {
+          label: 'Docs',
+          to: '/docs/tutorial/intro',
+          position: 'left',
+        },
+        {
+          label: 'Blog',
+          to: '/blog',
+          position: 'left',
+        },
+        {
+          label: 'Contribute',
+          to: '/docs/tutorial/intro',
+          position: 'right',
+          className: 'navbar-contribute-button',
+        },
         {
           href: 'https://github.com/JobHunter07/docs.jobhunter07.com',
-          label: 'GitHub',
           position: 'right',
+          className: 'header-github-link',
+          'aria-label': 'GitHub repository',
         },
       ],
     },
