@@ -226,7 +226,7 @@ Rating of how openly an employer shares information about hiring, compensation, 
 If you encounter a term not listed here:
 
 - Ask in the [community forums](https://community.jobhunter07.com)
-- Check the [FAQ](/about/faq)
+- Check the [FAQ](/docs/about/faq)
 - Suggest additions to this glossary through a governance proposal
 - Email documentation@jobhunter07.com
 

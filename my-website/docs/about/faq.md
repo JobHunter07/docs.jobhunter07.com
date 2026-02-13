@@ -36,7 +36,7 @@ No. While we use a token system for governance and incentives, you can use the c
 
 ### What data do you collect?
 
-We only collect data necessary to provide our services: profile information you choose to share, job search activity, and platform usage. See our [Privacy Policy](/legal/privacy-policy) for full details.
+We only collect data necessary to provide our services: profile information you choose to share, job search activity, and platform usage. See our [Privacy Policy](/docs/legal/privacy-policy) for full details.
 
 ### Who can see my data?
 
@@ -65,7 +65,7 @@ A DAO (Decentralized Autonomous Organization) is a community-governed organizati
 3. Vote on proposals in the governance portal
 4. Submit your own proposals for community consideration
 
-See our [DAO Overview](/governance/dao-overview) for more details.
+See our [DAO Overview](/docs/governance/dao-overview) for more details.
 
 ### Do I have to participate in governance?
 
@@ -108,7 +108,7 @@ Include whatever you're comfortable sharing. At minimum, we recommend:
 
 ### How do I get help if I'm stuck?
 
-- Check our [User Guides](/users/guides)
+- Check our [User Guides](/docs/users/guides)
 - Ask in the community forums
 - Contact our support team
 - Join community office hours
@@ -126,7 +126,7 @@ There are many ways to contribute:
 - **Content**: Write documentation, guides, or blog posts
 - **Feedback**: Test features and report bugs
 
-See [How to Contribute](/contributors/how-to-contribute) for more details.
+See [How to Contribute](/docs/contributors/how-to-contribute) for more details.
 
 ### Do contributors get compensated?
 
@@ -146,11 +146,11 @@ Yes. Our code is publicly available on GitHub under [appropriate open source lic
 
 ### What tech stack does JobHunter07 use?
 
-See our [Architecture Overview](/contributors/engineering/architecture-overview) for technical details.
+See our [Architecture Overview](/docs/contributors/engineering/architecture-overview) for technical details.
 
 ### How secure is JobHunter07?
 
-Security is a top priority. We implement industry-standard security practices, conduct regular audits, and maintain a responsible disclosure policy. See [Security](/operations/security) for more information.
+Security is a top priority. We implement industry-standard security practices, conduct regular audits, and maintain a responsible disclosure policy. See [Security](/docs/operations/security) for more information.
 
 ---
 
@@ -184,5 +184,5 @@ Profits are allocated based on DAO decisions, typically directed toward:
 
 - Join our [community discussions](https://community.jobhunter07.com)
 - Email us at [support@jobhunter07.com](mailto:support@jobhunter07.com)
-- Check our [glossary](/about/glossary) for definitions
-- Explore our [full documentation](/docs/intro)
+- Check our [glossary](/docs/about/glossary) for definitions
+- Explore our [full documentation](/docs/tutorial/intro)
