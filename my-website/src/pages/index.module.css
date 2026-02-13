@@ -3,8 +3,9 @@
  * and scoped locally.
  */
 
+/* ========== Hero Section ========== */
 .heroBanner {
-  padding: 8rem 0;
+  padding: 10rem 0;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -21,7 +22,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6));
   z-index: 0;
 }
 
@@ -30,19 +31,328 @@
   z-index: 1;
 }
 
-.heroBanner h1 {
+.heroTitle {
   color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
 }
 
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
-  }
+.heroSubtitle {
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+  font-size: 1.35rem;
+  max-width: 800px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.6;
+  font-weight: 400;
 }
 
 .buttons {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.ctaButton {
+  transition: all 0.3s ease;
+  font-weight: 600;
+  padding: 0.875rem 2rem;
+}
+
+.ctaButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 4rem 2rem;
+  }
+  
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+  
+  .heroSubtitle {
+    font-size: 1.15rem;
+  }
+}
+
+/* ========== Why We Exist Section ========== */
+.whyWeExist {
+  padding: 5rem 0;
+  background-color: var(--ifm-background-color);
+}
+
+.whyContent {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+  color: var(--ifm-heading-color);
+}
+
+.whyText p {
+  font-size: 1.35rem;
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+  color: var(--ifm-font-color-base);
+}
+
+.whyText .emphasis {
+  margin-top: 2rem;
+  font-weight: 600;
+  font-size: 1.45rem;
+}
+
+.whyText .finalStatement {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  color: var(--ifm-color-primary);
+  line-height: 1.6;
+}
+
+@media screen and (max-width: 996px) {
+  .whyWeExist {
+    padding: 3rem 1.5rem;
+  }
+  
+  .sectionTitle {
+    font-size: 2rem;
+  }
+  
+  .whyText p {
+    font-size: 1.15rem;
+  }
+  
+  .whyText .emphasis,
+  .whyText .finalStatement {
+    font-size: 1.25rem;
+  }
+}
+
+/* ========== What We're Building Section ========== */
+.whatWereBuilding {
+  padding: 5rem 0;
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.featureCard {
+  background-color: var(--ifm-background-surface-color);
+  padding: 2.5rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.featureCard:hover {
+  transform: scale(1.02) translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+.featureIcon {
+  color: var(--ifm-color-primary);
+  margin-bottom: 1.5rem;
+}
+
+.featureTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--ifm-heading-color);
+}
+
+.featureDescription {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--ifm-color-emphasis-700);
+  margin: 0;
+}
+
+/* ========== Roadmap/Progress Section ========== */
+.roadmapSection {
+  padding: 5rem 0;
+  background-color: var(--ifm-background-color);
+}
+
+.progressContainer {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.progressItem {
+  margin-bottom: 2.5rem;
+}
+
+.progressLabel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--ifm-heading-color);
+}
+
+.progressPercent {
+  color: var(--ifm-color-primary);
+  font-weight: 700;
+}
+
+.progressBar {
+  height: 14px;
+  background-color: var(--ifm-color-emphasis-200);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--ifm-color-primary), var(--ifm-color-primary-dark));
+  border-radius: 999px;
+  transition: width 1s ease-out;
+  position: relative;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+/* ========== Community Section ========== */
+.communitySection {
+  padding: 5rem 0;
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+.communityContent {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.communityList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2.5rem 0;
+  font-size: 1.25rem;
+  line-height: 2;
+}
+
+.communityList li {
+  margin-bottom: 1rem;
+  position: relative;
+  padding-left: 2rem;
+}
+
+.communityList li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--ifm-color-primary);
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.communityButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 996px) {
+  .communitySection {
+    padding: 3rem 1.5rem;
+  }
+  
+  .communityList {
+    font-size: 1.1rem;
+  }
+}
+
+/* ========== Bottom CTA Section ========== */
+.bottomCTA {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, var(--ifm-color-primary-darker) 0%, var(--ifm-color-primary) 100%);
+  color: white;
+}
+
+.ctaContent {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ctaTitle {
+  font-size: 2.75rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+.ctaText {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.bottomCTA .button {
+  background-color: white;
+  color: var(--ifm-color-primary);
+  border: none;
+  font-weight: 700;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.bottomCTA .button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+@media screen and (max-width: 996px) {
+  .bottomCTA {
+    padding: 3rem 1.5rem;
+  }
+  
+  .ctaTitle {
+    font-size: 2rem;
+  }
+  
+  .ctaText {
+    font-size: 1.1rem;
+  }
 }
