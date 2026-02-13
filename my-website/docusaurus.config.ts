@@ -35,6 +35,23 @@ const config: Config = {
     locales: ['en'],
   },
 
+  // Google Analytics
+  scripts: [
+    {
+      src: 'https://www.googletagmanager.com/gtag/js?id=G-NQP67BKEYQ',
+      async: true,
+    },
+    {
+      id: 'google-analytics',
+      innerHTML: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-NQP67BKEYQ');
+      `,
+    },
+  ],
+
   presets: [
     [
       'classic',
