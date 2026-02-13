@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="224.0" height="32" viewBox="0 0 224.0 32" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(0, 16.0)">
+    <!-- Outer Circle -->
+    <circle cx="12.0" cy="0" r="11.0" stroke="#F97316" stroke-width="2.56" fill="none"/>
+    
+    <!-- Inner Compass Shape -->
+    <polygon points="12.0,-5.28 16.32,0 12.0,5.28 7.68,0"
+             fill="#F97316"/>
+  </g>
+
+  <!-- Brand Text -->
+  <text x="32.0" y="21.76" 
+        font-family="Inter, Segoe UI, Roboto, Helvetica, Arial, sans-serif"
+        font-size="19.2"
+        font-weight="600"
+        fill="#E5E7EB">
+    JobHunter07
+  </text>
+</svg>

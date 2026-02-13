@@ -1,0 +1,172 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #10b981;
+  --ifm-color-primary-dark: #0ea573;
+  --ifm-color-primary-darker: #0d9c6c;
+  --ifm-color-primary-darkest: #0b8058;
+  --ifm-color-primary-light: #26d69a;
+  --ifm-color-primary-lighter: #39daa4;
+  --ifm-color-primary-lightest: #62e4bb;
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #26d69a;
+  --ifm-color-primary-dark: #13d089;
+  --ifm-color-primary-darker: #11c47f;
+  --ifm-color-primary-darkest: #0ea268;
+  --ifm-color-primary-light: #3ddbaa;
+  --ifm-color-primary-lighter: #4fdfb4;
+  --ifm-color-primary-lightest: #78e5c7;
+}
+
+/* Navbar customization - Transparent overlay ONLY on homepage */
+.navbar--fixed-top {
+  background-color: rgba(0, 0, 0, 0.15) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: none;
+}
+
+.navbar--fixed-top .navbar__brand {
+  font-weight: 500;
+  font-size: 1.125rem;
+  color: white !important;
+}
+
+.navbar--fixed-top .navbar__title {
+  color: white !important;
+}
+
+.navbar--fixed-top .navbar__link {
+  color: rgba(255, 255, 255, 0.9) !important;
+  transition: color 0.2s ease;
+}
+
+.navbar--fixed-top .navbar__link:hover {
+  color: white !important;
+}
+
+.navbar--fixed-top .navbar__link--active {
+  font-weight: 600;
+  color: white !important;
+}
+
+/* Normal navbar styling for documentation pages */
+.navbar {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* Override for docs pages - solid background */
+.docs-wrapper .navbar--fixed-top,
+article .navbar--fixed-top {
+  background-color: var(--ifm-navbar-background-color) !important;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.docs-wrapper .navbar__brand,
+article .navbar__brand {
+  color: var(--ifm-navbar-link-color) !important;
+}
+
+.docs-wrapper .navbar__title,
+article .navbar__title {
+  color: var(--ifm-navbar-link-color) !important;
+}
+
+.docs-wrapper .navbar__link,
+article .navbar__link {
+  color: var(--ifm-navbar-link-color) !important;
+}
+
+.navbar__brand {
+  font-weight: 500;
+  font-size: 1.125rem;
+}
+
+.navbar__item {
+  font-weight: 500;
+}
+
+.navbar__link--active {
+  font-weight: 600;
+}
+
+/* Contribute button styling */
+.navbar-contribute-button {
+  background-color: #ea580c;
+  color: white !important;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  margin-left: 0.5rem;
+}
+
+.navbar-contribute-button:hover {
+  background-color: #dc2626;
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px -1px rgba(0, 0, 0, 0.3);
+  color: white !important;
+}
+
+/* GitHub icon styling */
+.header-github-link {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  transition: background-color 0.2s ease;
+}
+
+.header-github-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.header-github-link:before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  display: flex;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23ffffff' d='M12 0.3a12 12 0 0 0-3.8 23.4c0.6 0.1 0.8-0.3 0.8-0.6v-2.2c-3.3 0.7-4-1.6-4-1.6-0.5-1.4-1.3-1.8-1.3-1.8-1.1-0.7 0.1-0.7 0.1-0.7 1.2 0.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0.1-0.8 0.4-1.3 0.7-1.6-2.7-0.3-5.5-1.3-5.5-6 0-1.2 0.5-2.3 1.3-3.1-0.1-0.4-0.6-1.6 0.1-3.2 0 0 1-0.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2 0.7 1.7 0.2 2.9 0.1 3.2 0.8 0.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9 0.5 0.4 0.9 1.1 0.9 2.2v3.3c0 0.3 0.2 0.7 0.8 0.6A12 12 0 0 0 12 0.3'/%3E%3C/svg%3E") no-repeat;
+}
+
+@media (max-width: 996px) {
+  .navbar-contribute-button {
+    margin-left: 0;
+    margin-top: 0.5rem;
+    display: block;
+    text-align: center;
+  }
+}
+:root {
+  --ifm-color-primary: #2e8555;
+  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #205d3b;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
