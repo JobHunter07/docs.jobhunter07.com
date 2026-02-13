@@ -25,8 +25,8 @@
   --ifm-color-primary-lightest: #78e5c7;
 }
 
-/* Navbar customization - Transparent overlay */
-.navbar {
+/* Navbar customization - Transparent overlay ONLY on homepage */
+.navbar--fixed-top {
   background-color: rgba(0, 0, 0, 0.15) !important;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -34,32 +34,69 @@
   box-shadow: none;
 }
 
-.navbar__brand {
-  font-weight: 600;
+.navbar--fixed-top .navbar__brand {
+  font-weight: 500;
   font-size: 1.125rem;
   color: white !important;
 }
 
-.navbar__title {
+.navbar--fixed-top .navbar__title {
   color: white !important;
+}
+
+.navbar--fixed-top .navbar__link {
+  color: rgba(255, 255, 255, 0.9) !important;
+  transition: color 0.2s ease;
+}
+
+.navbar--fixed-top .navbar__link:hover {
+  color: white !important;
+}
+
+.navbar--fixed-top .navbar__link--active {
+  font-weight: 600;
+  color: white !important;
+}
+
+/* Normal navbar styling for documentation pages */
+.navbar {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* Override for docs pages - solid background */
+.docs-wrapper .navbar--fixed-top,
+article .navbar--fixed-top {
+  background-color: var(--ifm-navbar-background-color) !important;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.docs-wrapper .navbar__brand,
+article .navbar__brand {
+  color: var(--ifm-navbar-link-color) !important;
+}
+
+.docs-wrapper .navbar__title,
+article .navbar__title {
+  color: var(--ifm-navbar-link-color) !important;
+}
+
+.docs-wrapper .navbar__link,
+article .navbar__link {
+  color: var(--ifm-navbar-link-color) !important;
+}
+
+.navbar__brand {
+  font-weight: 500;
+  font-size: 1.125rem;
 }
 
 .navbar__item {
   font-weight: 500;
 }
 
-.navbar__link {
-  color: rgba(255, 255, 255, 0.9) !important;
-  transition: color 0.2s ease;
-}
-
-.navbar__link:hover {
-  color: white !important;
-}
-
 .navbar__link--active {
   font-weight: 600;
-  color: white !important;
 }
 
 /* Contribute button styling */

@@ -76,10 +76,10 @@ const config: Config = {
     },
     navbar: {
       title: 'JobHunter07',
-      logo: {
-        alt: 'JobHunter07 Logo',
-        src: 'img/logo.svg',
-      },
+      // logo: {
+      //   alt: 'JobHunter07 Logo',
+      //   src: 'img/logo.svg',
+      // },
       items: [
         {
           label: 'Vision',
