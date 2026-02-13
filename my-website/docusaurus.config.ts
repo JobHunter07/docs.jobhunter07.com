@@ -35,14 +35,6 @@ const config: Config = {
     locales: ['en'],
   },
 
-  // Google Analytics
-  themeConfig: {
-    gtag: {
-      trackingID: 'G-NQP67BKEYQ',
-      anonymizeIP: true,
-    },
-  },
-
   presets: [
     [
       'classic',
@@ -71,6 +63,11 @@ const config: Config = {
         },
         theme: {
           customCss: './src/css/custom.css',
+        },
+        // Google Analytics
+        gtag: {
+          trackingID: 'G-NQP67BKEYQ',
+          anonymizeIP: true,
         },
       } satisfies Preset.Options,
     ],
