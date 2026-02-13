@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # JobHunter07 Overview
 
 JobHunter07 is a community‑run, human‑first employment platform designed to give job seekers the power, clarity, and support they deserve. Our mission is simple: **build a fair, transparent, community‑owned employment ecosystem** where workers—not corporations—control their data, their opportunities, and their future.

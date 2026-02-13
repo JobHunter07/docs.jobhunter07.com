@@ -1,57 +1,63 @@
 import type {ReactNode} from 'react';
 import clsx from 'clsx';
 import Heading from '@theme/Heading';
+import Link from '@docusaurus/Link';
 import styles from './styles.module.css';
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
-  description: ReactNode;
+  description: string;
+  link: string;
+  emoji: string;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
-    description: (
-      <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
-      </>
-    ),
+    title: 'JobHunter07 Overview',
+    emoji: '📋',
+    description: 'JobHunter07 is a community-run, human-first employment platform ...',
+    link: '/docs/about/overview',
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
-    description: (
-      <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
-      </>
-    ),
+    title: 'Our Mission',
+    emoji: '📋',
+    description: 'Empowering Workers Through Community Ownership',
+    link: '/docs/about/mission',
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
-    description: (
-      <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
-      </>
-    ),
+    title: 'Our Values',
+    emoji: '📋',
+    description: 'The principles that guide everything we build and every decision we ...',
+    link: '/docs/about/values',
+  },
+  {
+    title: 'Frequently Asked Questions',
+    emoji: '📋',
+    description: 'Quick answers to common questions about JobHunter07.',
+    link: '/docs/about/faq',
+  },
+  {
+    title: 'Glossary',
+    emoji: '📋',
+    description: 'Key terms and concepts used throughout JobHunter07 and this docu...',
+    link: '/docs/about/glossary',
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({title, emoji, description, link}: FeatureItem) {
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
-      </div>
+    <div className={clsx('col col--4')} style={{marginBottom: '2rem'}}>
+      <Link to={link} style={{textDecoration: 'none', color: 'inherit'}}>
+        <div className="card" style={{height: '100%', padding: '1.5rem'}}>
+          <div className="card__header">
+            <span style={{fontSize: '1.5rem', marginRight: '0.5rem'}}>{emoji}</span>
+            <Heading as="h3" style={{margin: 0}}>{title}</Heading>
+          </div>
+          <div className="card__body">
+            <p>{description}</p>
+          </div>
+        </div>
+      </Link>
     </div>
   );
 }
@@ -60,7 +66,10 @@ export default function HomepageFeatures(): ReactNode {
   return (
     <section className={styles.features}>
       <div className="container">
-        <div className="row">
+        <div className="text--center" style={{marginBottom: '2rem'}}>
+          <Heading as="h2">Learn about JobHunter07.</Heading>
+        </div>
+        <div className="row" style={{justifyContent: 'center'}}>
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
           ))}
