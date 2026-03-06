@@ -170,3 +170,8 @@ article .navbar__link {
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+/* Hide the logo image but keep the brand title as the clickable link */
+.navbar__logo {
+  display: none !important;
+}

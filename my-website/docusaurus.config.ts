@@ -75,16 +75,18 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'https://avatars.githubusercontent.com/u/261119352?s=200&v=4',
     colorMode: {
       respectPrefersColorScheme: true,
     },
     navbar: {
       title: 'JobHunter07',
-      // logo: {
-      //   alt: 'JobHunter07 Logo',
-      //   src: 'img/logo.svg',
-      // },
+      logo: {
+        alt: 'JobHunter07 Logo',
+        src: 'img/favicon.ico',
+        href: 'https://jobhunter07.com',
+        target: '_self',
+      },
       items: [
         {
           label: 'Vision',
@@ -93,7 +95,7 @@ const config: Config = {
         },
         {
           label: 'Docs',
-          to: '/docs/tutorial/intro',
+          to: '/docs/about/overview',
           position: 'left',
         },
         {
@@ -103,7 +105,7 @@ const config: Config = {
         },
         {
           label: 'Contribute',
-          to: '/docs/tutorial/intro',
+          to: '/docs/contributors/how-to-contribute',
           position: 'right',
           className: 'navbar-contribute-button',
         },
